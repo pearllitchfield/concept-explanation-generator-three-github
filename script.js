@@ -3,7 +3,7 @@ function displayConcept(response) {
     strings: response.data.answer,
     autoStart: true,
     cursor: null,
-    delay: 60,
+    delay: 10,
   });
 }
 
@@ -12,13 +12,15 @@ function generateConcept(event) {
 
   let searchBarInput = document.querySelector("#user-input");
   let apiKey = "7da7782c88c36f93atbb1b04a1aebo6b";
-  let context =
-    "You are an expert and have a great deal of knowledge on a blend of scientific concepts. Your answers are restricted to four lines of explanation only, follow user instructions explicitly. Sign and bold with 'SheCodes AI'";
+  let color = (style = "color: rgb(16, 113, 174");
+  let context = `You are an expert and have a great deal of knowledge on a blend of scientific concepts. Your answers are restricted to four lines of explanation only, follow user instructions explicitly. Sign with <span style="color: ${color};"><b>SheCodes AI</b>`;
+
   let prompt = `User instructions: Generate a concept about ${searchBarInput.value}`;
   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
-  let searchResultElement = DocumentFragment.querySelector("#hidden");
-  searchResultElement.style.display = "block";
+  let searchResultElement = document.querySelector("#search-result");
+  searchResultElement.classList.remove("hidden");
+  searchResultElement.innerHTML = `<div class="generating"> Generating concept search about ${searchBarInput.value} &nbsp&nbsp⏲️`;
 
   axios.get(apiUrl).then(displayConcept);
 }
