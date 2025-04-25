@@ -20,23 +20,24 @@
         <h1>Welcome to the <br />AI Concept Explanation Generator</h1>
       </header>
       <main>
-        <form id="concept-generator-form">
-          <input
-            class="search-bar"
-            id="user-input"
-            type="text"
-            placeholder="Enter concept to generate explanation..."
-            autocomplete="off"
-            autofocus=""
-            required=""
-          />
-          <input class="search-button" type="submit" value="Search" />
-        </form>
         <div class="search-hint">
-          i.e. singularity realm, black hole, baryonic matter, celestial body,
-          spacetime continuum, etc.
+          <form id="concept-generator-form">
+            <input
+              class="search-bar"
+              id="user-input"
+              type="text"
+              placeholder="Enter concept to generate explanation..."
+              autocomplete="off"
+              autofocus=""
+              required=""
+            />
+            <input class="search-button" type="submit" value="Search" />
+          </form>
+          <small>
+            i.e. singularity realm, black hole, baryonic matter, celestial body,
+            spacetime continuum, etc.</small
+          >
         </div>
-        <br />
         <div class="search-result" id="search-result"></div>
       </main>
       <footer>
