@@ -17,6 +17,9 @@ function generateConcept(event) {
   let prompt = `User instructions: Generate a concept about ${searchBarInput.value}`;
   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
+  let searchResultElement = DocumentFragment.querySelector("#hidden");
+  searchResultElement.style.display = "block";
+
   axios.get(apiUrl).then(displayConcept);
 }
 
