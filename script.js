@@ -1,13 +1,21 @@
+function displayConcept(response) {
+  new Typewriter("#search-result", {
+    strings: response.data.answer,
+    autoStart: true,
+    cursor: null,
+    delay: 60,
+  });
+}
+
 function generateConcept(event) {
   event.preventDefault();
 
-  new Typewriter("#search-result", {
-    strings:
-      "A singularity realm refers to a state or concept that is often used in both scientific and fictional contexts. In physics, a singularity is a point of infinite density and gravity, like the center of a black hole. In the realm of AI, the term refers to a potential future point where artificial intelligence surpasses human intelligence.",
-    autoStart: true,
-    cursor: "",
-    delay: 1,
-  });
+  let apiKey = "7da7782c88c36f93atbb1b04a1aebo6b";
+  let context = "";
+  let prompt = "";
+  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  axios.get(apiUrl).then(displayConcept);
 }
 
 let conceptFormElement = document.querySelector("#concept-generator-form");
